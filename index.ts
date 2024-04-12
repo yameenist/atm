@@ -29,27 +29,34 @@ let pinAns = await inquirer.prompt(
                 name : "operation",
                 message : "please select option",
                 type : "list",
-                choices : ["withdraw", "fast cash", "balance check"]
+                choices : ["withdrawal", "fast cash", "balance check"]
             }
         ]    
 
         );
 
         console.log(operationAns);
-        if (operationAns.operation === "withdraw") {
-            let amountAns = await inquirer.prompt(
-                [
-                    {
-                        name : "amount",
-                        message : "please type amount",
-                        type : "number"
-                    }
-                ]);
-                myBalance -= amountAns.amount;
-        console.log("your balance is: " + myBalance)
+        if (operationAns.operation == "withdrawal") 
+        
+    {
+        let cashwithdrawal = await inquirer.prompt(
+            [
+                {
+                    name : "withdrawal",
+                    message : "Enter the amount you want to withdrawal",
+                    type : "number"
 
-        
-        
+                }
+            ]
+            );
+            
+                if (myBalance >= cashwithdrawal.withdrawal)
+               {
+                  myBalance -= cashwithdrawal.withdrawal;
+        console.log("your total balance is: " + myBalance)
+               }
+        else (console.log("Sorry insufficient balance")
+        )
         }
         
         else if (operationAns.operation === "balance check") {
